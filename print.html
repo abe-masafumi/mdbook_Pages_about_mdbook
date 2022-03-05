@@ -140,25 +140,23 @@
 <p><a href="https://zenn.dev/404_fof/articles/272f2a88d2d519b1edb3">参考サイト</a></p>
 <h2><a class="header" href="#上記の参考サイトを簡単に説明" id="上記の参考サイトを簡単に説明">上記の参考サイトを簡単に説明</a></h2>
 <ol>
-<li>
-<p>mdbook プロジェクトを作成</p>
+<li>mdbook プロジェクトを作成</li>
+</ol>
 <pre><code class="language-bash">cd Desktop
 
 mkdir mdbook_test
 
 cd mdbook_test
 </code></pre>
-</li>
-<li>
-<p>リポジトリに登録するための SSH 鍵を作成する(mdbook_test にファイルで保存される)※あとで消す</p>
+<ol>
+<li>リポジトリに登録するための SSH 鍵を作成する(mdbook_test にファイルで保存される)※あとで消す</li>
+</ol>
 <pre><code class="language-bash">ssh-keygen -t rsa -b 4096 -f gh-pages
 or
 ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N &quot;&quot;
 </code></pre>
-</li>
-<li>
-<p>github レポジトリを２つ作成。 1 つは mdbook を作成する プロジェクト 用, 1 つは GitHub Pages 用</p>
-</li>
+<ol>
+<li>github レポジトリを２つ作成。 1 つは mdbook を作成する プロジェクト 用, 1 つは GitHub Pages 用</li>
 </ol>
 <ul>
 <li>
@@ -194,6 +192,8 @@ ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N
 </li>
 <li>
 <p>設定ファイルの２つ作成</p>
+</li>
+</ul>
 <p>&quot;.github/actions/build/Dockerfile&quot;</p>
 <pre><code>FROM rust:latest
 
@@ -204,37 +204,44 @@ CMD [&quot;mdbook&quot;, &quot;build&quot;]
 <p>&quot;.github/workflows/main.yml&quot;</p>
 <pre><code class="language-yml">name: CI/CD
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - &quot;src/**&quot;
-      - &quot;book.toml&quot;
+push:
+branches:
+- master
+paths:
+- &quot;src/**&quot;
+- &quot;book.toml&quot;
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        uses: ./.github/actions/build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          EXTERNAL_REPOSITORY: abe-masafumi/mdbook_Pages_test
-          PUBLISH_BRANCH: master
-          PUBLISH_DIR: ./book
+deploy:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v2
+- name: Build
+uses: ./.github/actions/build
+- name: Deploy
+uses: peaceiris/actions-gh-pages@v3
+with:
+  deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+  EXTERNAL_REPOSITORY: abe-masafumi/mdbook_Pages_test
+  PUBLISH_BRANCH: master
+  PUBLISH_DIR: ./book
 </code></pre>
-</li>
-</ul>
 <ol>
-<li>
-<p>mdbook の設定</p>
+<li>mdbook の設定</li>
+</ol>
 <pre><code class="language-bash">mdbook init
 </code></pre>
-</li>
+<ol>
+<li>git hub にプッシュ</li>
 </ol>
+<pre><code>git init
+
+...
+省略
+...
+
+git push origin master
+</code></pre>
 
                     </main>
 
