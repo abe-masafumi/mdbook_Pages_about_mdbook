@@ -137,29 +137,21 @@
 <p><a href="https://qiita.com/pyama2000/items/9d87d5dc2991d5f3c3e5">参考サイト</a></p>
 <p><a href="https://zenn.dev/404_fof/articles/272f2a88d2d519b1edb3">参考サイト</a></p>
 <h2><a class="header" href="#上記の参考サイトを簡単に説明" id="上記の参考サイトを簡単に説明">上記の参考サイトを簡単に説明</a></h2>
-<ol>
-<li>mdbook プロジェクトを作成</li>
-</ol>
+<h4><a class="header" href="#mdbook-プロジェクトを作成" id="mdbook-プロジェクトを作成">mdbook プロジェクトを作成</a></h4>
 <pre><code class="language-bash">cd Desktop
 
 mkdir mdbook_test
 
 cd mdbook_test
 </code></pre>
-<ol>
-<li>リポジトリに登録するための SSH 鍵を作成する(mdbook_test にファイルで保存される)※あとで消す</li>
-</ol>
+<h4><a class="header" href="#リポジトリに登録するための-ssh-鍵を作成するmdbook_test-にファイルで保存されるあとで消す" id="リポジトリに登録するための-ssh-鍵を作成するmdbook_test-にファイルで保存されるあとで消す">リポジトリに登録するための SSH 鍵を作成する(mdbook_test にファイルで保存される)※あとで消す</a></h4>
 <pre><code class="language-bash">ssh-keygen -t rsa -b 4096 -f gh-pages
 or
 ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N &quot;&quot;
 </code></pre>
-<ol>
-<li>github レポジトリを２つ作成。 1 つは mdbook を作成する プロジェクト 用, 1 つは GitHub Pages 用</li>
-</ol>
-<ul>
-<li>
+<h4><a class="header" href="#github-レポジトリを２つ作成-1-つは-mdbook-を作成する-プロジェクト-用-1-つは-github-pages-用" id="github-レポジトリを２つ作成-1-つは-mdbook-を作成する-プロジェクト-用-1-つは-github-pages-用">github レポジトリを２つ作成。 1 つは mdbook を作成する プロジェクト 用, 1 つは GitHub Pages 用</a></h4>
 <p>[mdbook を作成する プロジェクト 用の作業]</p>
-</li>
+<ul>
 <li>
 <p>Settings &gt; Deploy keys に任意の名前で登録します(今回の名前は&quot;ACTIONS_DEPLOY_KEY&quot;)</p>
 </li>
@@ -170,9 +162,7 @@ ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N
 <p>Allow write access にチェックを入れる(このキーでこのリポジトリにプッシュできますか？デプロイキーは常にプルアクセスが可能です。)</p>
 </li>
 </ul>
-<ol>
-<li>[GitHub Pages 用]</li>
-</ol>
+<p>[GitHub Pages 用]</p>
 <ul>
 <li>
 <p>Settings &gt; Secrets に&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
@@ -181,9 +171,7 @@ ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N
 <p>key に(gh-pages)をペースト</p>
 </li>
 </ul>
-<ol>
-<li>mdbook_test の作業</li>
-</ol>
+<h4><a class="header" href="#mdbook_test-の作業" id="mdbook_test-の作業">mdbook_test の作業</a></h4>
 <ul>
 <li>
 <p>mdbook_test に保存されている(gh-pages.pub)と(gh-pages)は削除して良い</p>
@@ -224,14 +212,10 @@ with:
   PUBLISH_BRANCH: master
   PUBLISH_DIR: ./book
 </code></pre>
-<ol>
-<li>mdbook の設定</li>
-</ol>
+<h4><a class="header" href="#mdbook-の設定" id="mdbook-の設定">mdbook の設定</a></h4>
 <pre><code class="language-bash">mdbook init
 </code></pre>
-<ol>
-<li>git hub にプッシュ</li>
-</ol>
+<h4><a class="header" href="#git-hub-にプッシュ" id="git-hub-にプッシュ">git hub にプッシュ</a></h4>
 <pre><code>git init
 
 ...
