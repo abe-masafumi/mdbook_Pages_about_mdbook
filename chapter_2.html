@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>mdbook使用方法</title>
+        <title>エラー</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> mdbook使用方法</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> エラー</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> mdbook使用方法</a></li><li class="chapter-item expanded "><a href="chapter_2.html" class="active"><strong aria-hidden="true">2.</strong> エラー</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -132,110 +132,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#mdbook-使用方法" id="mdbook-使用方法">mdbook 使用方法</a></h1>
+                        <h1><a class="header" href="#エラー" id="エラー">エラー</a></h1>
 <hr />
-<p><a href="https://qiita.com/pyama2000/items/9d87d5dc2991d5f3c3e5">参考サイト</a></p>
-<p><a href="https://zenn.dev/404_fof/articles/272f2a88d2d519b1edb3">参考サイト</a></p>
-<h2><a class="header" href="#上記の参考サイトを簡単に説明" id="上記の参考サイトを簡単に説明">上記の参考サイトを簡単に説明</a></h2>
-<h4><a class="header" href="#mdbook-プロジェクトを作成" id="mdbook-プロジェクトを作成">mdbook プロジェクトを作成</a></h4>
-<pre><code class="language-bash">cd Desktop
-
-mkdir mdbook_test
-
-cd mdbook_test
-</code></pre>
-<h4><a class="header" href="#リポジトリに登録するための-ssh-鍵を作成するmdbook_test-にファイルで保存されるあとで消す" id="リポジトリに登録するための-ssh-鍵を作成するmdbook_test-にファイルで保存されるあとで消す">リポジトリに登録するための SSH 鍵を作成する(mdbook_test にファイルで保存される)※あとで消す</a></h4>
-<pre><code class="language-bash">ssh-keygen -t rsa -b 4096 -f gh-pages
-or
-ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N &quot;&quot;
-</code></pre>
-<h4><a class="header" href="#github-レポジトリを２つ作成-1-つは-mdbook-を作成する-プロジェクト-用-1-つは-github-pages-用" id="github-レポジトリを２つ作成-1-つは-mdbook-を作成する-プロジェクト-用-1-つは-github-pages-用">github レポジトリを２つ作成。 1 つは mdbook を作成する プロジェクト 用, 1 つは GitHub Pages 用</a></h4>
-<p>[mdbook を作成する プロジェクト 用の作業]</p>
-<ul>
-<li>
-<p>Settings &gt; Deploy keys に任意の名前で登録します(今回の名前は&quot;ACTIONS_DEPLOY_KEY&quot;)</p>
-</li>
-<li>
-<p>key に(gh-pages.pub)をペースト</p>
-</li>
-<li>
-<p>Allow write access にチェックを入れる(このキーでこのリポジトリにプッシュできますか？デプロイキーは常にプルアクセスが可能です。)</p>
-</li>
-</ul>
-<p>[GitHub Pages 用]</p>
-<ul>
-<li>
-<p>Settings &gt; Secrets に&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
-</li>
-<li>
-<p>key に(gh-pages)をペースト</p>
-</li>
-</ul>
-<h4><a class="header" href="#mdbook_test-の作業" id="mdbook_test-の作業">mdbook_test の作業</a></h4>
-<ul>
-<li>
-<p>mdbook_test に保存されている(gh-pages.pub)と(gh-pages)は削除して良い</p>
-</li>
-<li>
-<p>設定ファイルの２つ作成</p>
-</li>
-</ul>
-<p>&quot;.github/actions/build/Dockerfile&quot;</p>
-<pre><code>FROM rust:latest
-
-RUN cargo install mdbook --no-default-features --features output --vers &quot;^0.3.5&quot;
-
-CMD [&quot;mdbook&quot;, &quot;build&quot;]
-</code></pre>
-<p>&quot;.github/workflows/main.yml&quot;</p>
-<pre><code class="language-yml">name: CI/CD
-on:
-push:
-branches:
-- master
-paths:
-- &quot;src/**&quot;
-- &quot;book.toml&quot;
-
-jobs:
-deploy:
-runs-on: ubuntu-latest
-steps:
-- uses: actions/checkout@v2
-- name: Build
-uses: ./.github/actions/build
-- name: Deploy
-uses: peaceiris/actions-gh-pages@v3
-with:
-  deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-  EXTERNAL_REPOSITORY: abe-masafumi/mdbook_Pages_test
-  PUBLISH_BRANCH: master
-  PUBLISH_DIR: ./book
-</code></pre>
-<h4><a class="header" href="#mdbook-の設定" id="mdbook-の設定">mdbook の設定</a></h4>
-<pre><code class="language-bash">mdbook init
-</code></pre>
-<h4><a class="header" href="#mdbook-を作成する-プロジェクトの-レポジトリ-ににプッシュ" id="mdbook-を作成する-プロジェクトの-レポジトリ-ににプッシュ">[mdbook を作成する プロジェクト]の レポジトリ ににプッシュ</a></h4>
-<pre><code>git init
-
-...
-省略
-...
-
-git push origin master
-</code></pre>
-<p>actionsがエラーなく終了したら [GitHub Pages 用]のレポジトリに移動してGitHub Pagesの設定をして終了</p>
+<p><a href="https://github.com/peaceiris/actions-gh-pages/issues/123">Error: Error: Error: not found deploy key or tokens</a></p>
+<p><a href="https://itips.krsw.biz/github-unable-to-access-exit-code-128/">Error: The process '/usr/bin/git' failed with exit code 128</a></p>
+<p>アクセスする場所が違うか、アクセス権限がないか？</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-
-                        
-                            <a rel="next" href="chapter_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="chapter_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
+
                         
 
                         <div style="clear: both"></div>
@@ -245,11 +157,11 @@ git push origin master
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-
-                
-                    <a rel="next" href="chapter_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="chapter_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
+
                 
             </nav>
 

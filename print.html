@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> mdbook使用方法</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> mdbook使用方法</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> エラー</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -217,7 +217,7 @@ with:
 <h4><a class="header" href="#mdbook-の設定" id="mdbook-の設定">mdbook の設定</a></h4>
 <pre><code class="language-bash">mdbook init
 </code></pre>
-<h4><a class="header" href="#git-hub-にプッシュ" id="git-hub-にプッシュ">git hub にプッシュ</a></h4>
+<h4><a class="header" href="#mdbook-を作成する-プロジェクトの-レポジトリ-ににプッシュ" id="mdbook-を作成する-プロジェクトの-レポジトリ-ににプッシュ">[mdbook を作成する プロジェクト]の レポジトリ ににプッシュ</a></h4>
 <pre><code>git init
 
 ...
@@ -226,6 +226,12 @@ with:
 
 git push origin master
 </code></pre>
+<p>actionsがエラーなく終了したら [GitHub Pages 用]のレポジトリに移動してGitHub Pagesの設定をして終了</p>
+<h1><a class="header" href="#エラー" id="エラー">エラー</a></h1>
+<hr />
+<p><a href="https://github.com/peaceiris/actions-gh-pages/issues/123">Error: Error: Error: not found deploy key or tokens</a></p>
+<p><a href="https://itips.krsw.biz/github-unable-to-access-exit-code-128/">Error: The process '/usr/bin/git' failed with exit code 128</a></p>
+<p>アクセスする場所が違うか、アクセス権限がないか？</p>
 
                     </main>
 
