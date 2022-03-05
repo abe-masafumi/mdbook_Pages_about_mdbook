@@ -134,34 +134,91 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#mdbook使用方法" id="mdbook使用方法">mdbook使用方法</a></h1>
+                        <h1><a class="header" href="#mdbook-使用方法" id="mdbook-使用方法">mdbook 使用方法</a></h1>
 <hr />
 <p><a href="https://qiita.com/pyama2000/items/9d87d5dc2991d5f3c3e5">参考サイト</a></p>
 <p><a href="https://zenn.dev/404_fof/articles/272f2a88d2d519b1edb3">参考サイト</a></p>
 <ul>
 <li>上記の参考サイトを簡単に説明</li>
 </ul>
-<p>mdbookプロジェクトを作成</p>
+<ol>
+<li>
+<p>mdbook プロジェクトを作成</p>
 <pre><code class="language-bash">cd Desktop
 
 mkdir mdbook_test
 
 cd mdbook_test
 </code></pre>
-<p>リポジトリに登録するためのSSH鍵(mdbook_testにファイルで保存される)あとで消す</p>
+</li>
+<li>
+<p>リポジトリに登録するための SSH 鍵を作成する(mdbook_test にファイルで保存される)※あとで消す</p>
 <pre><code class="language-bash">ssh-keygen -t rsa -b 4096 -f gh-pages
 or
 ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N &quot;&quot;
 </code></pre>
-<p>githubレポジトリを２つ作成,1つはmdbookを作成する プロジェクト 用,1つは GitHub Pages用</p>
-<p>[mdbookを作成する プロジェクト 用の作業]</p>
-<p>Settings &gt; Deploy keysに任意の名前で登録します(今回の名前は&quot;ACTIONS_DEPLOY_KEY&quot;)</p>
-<p>keyに(gh-pages.pub)をペースト</p>
+</li>
+<li>
+<p>github レポジトリを２つ作成。 1 つは mdbook を作成する プロジェクト 用, 1 つは GitHub Pages 用</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>[mdbook を作成する プロジェクト 用の作業]</p>
+</li>
+<li>
+<p>Settings &gt; Deploy keys に任意の名前で登録します(今回の名前は&quot;ACTIONS_DEPLOY_KEY&quot;)</p>
+</li>
+<li>
+<p>key に(gh-pages.pub)をペースト</p>
+</li>
+<li>
 <p>Allow write access にチェックを入れる(このキーでこのリポジトリにプッシュできますか？デプロイキーは常にプルアクセスが可能です。)</p>
-<p>[GitHub Pages用]</p>
-<p>Settings &gt; Secretsに&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
-<p>keyに(gh-pages)をペースト</p>
-<p>mdbook_testに保存されている(gh-pages.pub)と(gh-pages)は削除して良い</p>
+</li>
+</ul>
+<ol>
+<li>[GitHub Pages 用]</li>
+</ol>
+<p>Settings &gt; Secrets に&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
+<p>key に(gh-pages)をペースト</p>
+<p>mdbook_test の作業</p>
+<p>mdbook_test に保存されている(gh-pages.pub)と(gh-pages)は削除して良い</p>
+<p>設定ファイルの２つ作成</p>
+<p>&quot;.github/actions/build/Dockerfile&quot;</p>
+<pre><code>FROM rust:latest
+
+RUN cargo install mdbook --no-default-features --features output --vers &quot;^0.3.5&quot;
+
+CMD [&quot;mdbook&quot;, &quot;build&quot;]
+</code></pre>
+<p>&quot;.github/workflows/main.yml&quot;</p>
+<pre><code class="language-yml">name: CI/CD
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - &quot;src/**&quot;
+      - &quot;book.toml&quot;
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        uses: ./.github/actions/build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          EXTERNAL_REPOSITORY: abe-masafumi/mdbook_Pages_test
+          PUBLISH_BRANCH: master
+          PUBLISH_DIR: ./book
+</code></pre>
+<p>mdbook の設定</p>
+<pre><code class="language-bash">mdbook init
+</code></pre>
 
                     </main>
 
