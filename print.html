@@ -153,6 +153,15 @@ cd mdbook_test
 or
 ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N &quot;&quot;
 </code></pre>
+<p>githubレポジトリを２つ作成,1つはmdbookを作成する プロジェクト 用,1つは GitHub Pages用</p>
+<p>[mdbookを作成する プロジェクト 用の作業]</p>
+<p>Settings &gt; Deploy keysに任意の名前で登録します(今回の名前は&quot;ACTIONS_DEPLOY_KEY&quot;)</p>
+<p>keyに(gh-pages.pub)をペースト</p>
+<p>Allow write access にチェックを入れる(このキーでこのリポジトリにプッシュできますか？デプロイキーは常にプルアクセスが可能です。)</p>
+<p>[GitHub Pages用]</p>
+<p>Settings &gt; Secretsに&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
+<p>keyに(gh-pages)をペースト</p>
+<p>mdbook_testに保存されている(gh-pages.pub)と(gh-pages)は削除して良い</p>
 
                     </main>
 
