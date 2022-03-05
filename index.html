@@ -136,9 +136,7 @@
 <hr />
 <p><a href="https://qiita.com/pyama2000/items/9d87d5dc2991d5f3c3e5">参考サイト</a></p>
 <p><a href="https://zenn.dev/404_fof/articles/272f2a88d2d519b1edb3">参考サイト</a></p>
-<ul>
-<li>上記の参考サイトを簡単に説明</li>
-</ul>
+<h2><a class="header" href="#上記の参考サイトを簡単に説明" id="上記の参考サイトを簡単に説明">上記の参考サイトを簡単に説明</a></h2>
 <ol>
 <li>
 <p>mdbook プロジェクトを作成</p>
@@ -177,10 +175,22 @@ ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N
 <ol>
 <li>[GitHub Pages 用]</li>
 </ol>
+<ul>
+<li>
 <p>Settings &gt; Secrets に&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
+</li>
+<li>
 <p>key に(gh-pages)をペースト</p>
-<p>mdbook_test の作業</p>
+</li>
+</ul>
+<ol>
+<li>mdbook_test の作業</li>
+</ol>
+<ul>
+<li>
 <p>mdbook_test に保存されている(gh-pages.pub)と(gh-pages)は削除して良い</p>
+</li>
+<li>
 <p>設定ファイルの２つ作成</p>
 <p>&quot;.github/actions/build/Dockerfile&quot;</p>
 <pre><code>FROM rust:latest
@@ -214,9 +224,15 @@ jobs:
           PUBLISH_BRANCH: master
           PUBLISH_DIR: ./book
 </code></pre>
+</li>
+</ul>
+<ol>
+<li>
 <p>mdbook の設定</p>
 <pre><code class="language-bash">mdbook init
 </code></pre>
+</li>
+</ol>
 
                     </main>
 
