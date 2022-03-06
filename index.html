@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> mdbook使用方法</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> エラー</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> mdbook使用方法</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> エラー</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Markdown記入法</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,6 +134,8 @@
                     <main>
                         <h1><a class="header" href="#mdbook-使用方法" id="mdbook-使用方法">mdbook 使用方法</a></h1>
 <hr />
+<p><a href="https://docs.rs/crate/mdbook/0.4.13">document</a></p>
+<p><a href="https://rust-lang.github.io/mdBook/">document</a></p>
 <p><a href="https://qiita.com/pyama2000/items/9d87d5dc2991d5f3c3e5">参考サイト</a></p>
 <p><a href="https://zenn.dev/404_fof/articles/272f2a88d2d519b1edb3">参考サイト</a></p>
 <h2><a class="header" href="#上記の参考サイトを簡単に説明" id="上記の参考サイトを簡単に説明">上記の参考サイトを簡単に説明</a></h2>
@@ -153,7 +155,19 @@ ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N
 <p>[mdbook を作成する プロジェクト 用の作業]</p>
 <ul>
 <li>
-<p>Settings &gt; Deploy keys に任意の名前で登録します(今回の名前は&quot;ACTIONS_DEPLOY_KEY&quot;)</p>
+<p>Settings &gt;  Secrets に任意の名前で登録します(今回の名前は&quot;ACTIONS_DEPLOY_KEY&quot;)</p>
+</li>
+<li>
+<p>key に 秘密鍵(gh-pages)をペースト</p>
+</li>
+<li>
+<p>Actions &gt; new workflow &gt; Simple workflow &gt; start commit </p>
+</li>
+</ul>
+<p>[GitHub Pages 用]</p>
+<ul>
+<li>
+<p>Settings &gt; Deploy keys に&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
 </li>
 <li>
 <p>key に(gh-pages.pub)をペースト</p>
@@ -162,19 +176,10 @@ ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N
 <p>Allow write access にチェックを入れる(このキーでこのリポジトリにプッシュできますか？デプロイキーは常にプルアクセスが可能です。)</p>
 </li>
 </ul>
-<p>[GitHub Pages 用]</p>
-<ul>
-<li>
-<p>Settings &gt; Secrets に&quot;ACTIONS_DEPLOY_KEY&quot;という名前で登録します</p>
-</li>
-<li>
-<p>key に(gh-pages)をペースト</p>
-</li>
-</ul>
 <h4><a class="header" href="#mdbook_test-の作業" id="mdbook_test-の作業">mdbook_test の作業</a></h4>
 <ul>
 <li>
-<p>mdbook_test に保存されている(gh-pages.pub)と(gh-pages)は削除して良い</p>
+<p>mdbook_test に保存されている(gh-pages.pub)と(gh-pages)は使い回しできないので削除して良い</p>
 </li>
 <li>
 <p>設定ファイルの２つ作成</p>
@@ -188,32 +193,39 @@ RUN cargo install mdbook --no-default-features --features output --vers &quot;^0
 CMD [&quot;mdbook&quot;, &quot;build&quot;]
 </code></pre>
 <p>&quot;.github/workflows/main.yml&quot;</p>
-<pre><code class="language-yml">name: CI/CD
+<pre><code class="language-yml">
+name: CI/CD
 on:
-push:
-branches:
-- master
-paths:
-- &quot;src/**&quot;
-- &quot;book.toml&quot;
+  push:
+    branches:
+    - master
+    paths:
+    - &quot;src/**&quot;
+    - &quot;book.toml&quot;
 
 jobs:
-deploy:
-runs-on: ubuntu-latest
-steps:
-- uses: actions/checkout@v2
-- name: Build
-uses: ./.github/actions/build
-- name: Deploy
-uses: peaceiris/actions-gh-pages@v3
-with:
-  deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-  EXTERNAL_REPOSITORY: abe-masafumi/mdbook_Pages_test
-  PUBLISH_BRANCH: master
-  PUBLISH_DIR: ./book
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      uses: ./.github/actions/build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        EXTERNAL_REPOSITORY: abe-masafumi/mdbook_Pages_about_mdbook
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: ./book
 </code></pre>
+<p>ymlファイルについて</p>
+<p><a href="https://docs.github.com/ja/actions/using-workflows/workflow-syntax-for-github-actions">git hub</a></p>
+<p><a href="https://yaml.org/">yml 公式</a></p>
+<p><a href="https://qiita.com/supercell1023koeda/items/6b1fd399b1957077651a">yamlファイルの書き方やと特徴</a></p>
 <h4><a class="header" href="#mdbook-の設定" id="mdbook-の設定">mdbook の設定</a></h4>
 <pre><code class="language-bash">mdbook init
+
+mdbook build
 </code></pre>
 <h4><a class="header" href="#mdbook-を作成する-プロジェクトの-レポジトリ-ににプッシュ" id="mdbook-を作成する-プロジェクトの-レポジトリ-ににプッシュ">[mdbook を作成する プロジェクト]の レポジトリ ににプッシュ</a></h4>
 <pre><code>git init
