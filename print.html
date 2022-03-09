@@ -276,38 +276,69 @@ Error: -06 12:55:47 [ERROR] (mdbook::utils): 	Caused By: Error at line 13, colum
 <h1><a class="header" href="#ターミナルの知識" id="ターミナルの知識">ターミナルの知識</a></h1>
 <hr />
 <p>コマンド一覧</p>
-<h3><a class="header" href="#表示" id="表示">表示</a></h3>
-<p>カレントディレクトにあるファイルを表示する。（listの略）</p>
+<h3><a class="header" href="#表示listの略" id="表示listの略">表示（listの略）</a></h3>
+<p>「ls」+「オプション」+「ファイル、ディレクトリ名」</p>
 <pre><code>ls  #カレントディレクトリにあるファイルやディレクトリを表示する
 ls -l  #ファイルやディレクトリの詳細も同時に表示する
 ls -a  #隠しファイルも含めファイルやディレクトリを全て表示する
 ls −la  #隠しファイルを含む全てのファイルやディレクトリの詳細を表示する
 pwd コマンド #カレントディレクトリのパスを表示する。（print working directoryの略）
 </code></pre>
-<h3><a class="header" href="#移動" id="移動">移動</a></h3>
-<p>カレントディレクトリにあるファイルに移動する。（change directoryの略）</p>
+<pre><code>オプション	機能
+-a	        隠しファイル含めファイル全表示
+-A	        「.」と「..」以外の隠しファイル含め全表示
+-l	        詳細で表示
+-l -@	        拡張属性の内容を表示
+-l -e	        ACL設定がされているディレクトリを表示
+-l -h	        サイズを適正な単位で表示
+-l -u	        最終アクセス日を表示
+-l -U	        作成された日時を表示
+-F	        名前の末尾に種類を意味する記号を表示
+-t	        日時を最近のものから並び替えて表示
+-R	        サブディレクトリの内容も表示
+-S	        サイズの大きいものから並び替えて表示
+-r	        名前を降順に表示
+-d	        指定したディレクトリの情報を表示
+-o	        グループ名を省略して詳細表示
+-g	        所有者名を省略して詳細表示
+-G	        種類に応じて色を変更して表示
+</code></pre>
+<h3><a class="header" href="#移動change-directoryの略" id="移動change-directoryの略">移動（change directoryの略）</a></h3>
 <pre><code>cd test.html  # testテストというファイルに移動する
 cd ~/  #ホームディレクトリに移動する
 cd ..  #一つ上の階層のファイルに移動する
 </code></pre>
-<h3><a class="header" href="#ファイルの作成" id="ファイルの作成">ファイルの作成</a></h3>
+<h3><a class="header" href="#ファイルの作成print-working-directoryの略" id="ファイルの作成print-working-directoryの略">ファイルの作成（print working directoryの略）</a></h3>
 <pre><code>touch コマンド #中身が空のファイルを作る。
 touch test.html  #test.htmlという中身が空のファイルを作る
 </code></pre>
-<h3><a class="header" href="#ディレクトリの作成" id="ディレクトリの作成">ディレクトリの作成</a></h3>
-<pre><code>mkdir コマンド #新しい空のディレクトリを作る。（make directoryの略）
-mkdir test #testというファイルを作る
-mv コマンド #ファイルを移動したり、ファイル名を変更したりする。（moveの略）
+<h3><a class="header" href="#ディレクトリの作成make-directoryの略" id="ディレクトリの作成make-directoryの略">ディレクトリの作成（make directoryの略）</a></h3>
+<pre><code>mkdir test #testというファイルを作る
 </code></pre>
-<h3><a class="header" href="#ファイルの移動名前変更コピー" id="ファイルの移動名前変更コピー">ファイルの移動、名前変更、コピー</a></h3>
+<h3><a class="header" href="#ファイルの移動名前変更コピーmoveの略copyの略" id="ファイルの移動名前変更コピーmoveの略copyの略">ファイルの移動、名前変更、コピー（moveの略）（copyの略）</a></h3>
 <pre><code>mv test.html tmp/  #test.htmlというファイルを相対パスでtmp/に移動する
 mv test.html test2.html  #test.htmlというファイルをtest2.htmlに名前変更する
-cp コマンド #ファイルをコピーする。（copyの略）
+cp コマンド #ファイルをコピーする。
 cp test.html tmp/  #test.htmlを相対パスでtmp/というディレクトリの中にコピーする
 cp test.html test2.html  #test.htmlをtest2.htmlという名前でコピーする
 cp −r dir /tmp/  #dirというディレクトリとその中身を絶対パスで/tmp/にそっくりコピーする
 </code></pre>
-<h3><a class="header" href="#削除" id="削除">削除</a></h3>
+<h3><a class="header" href="#ファイルの編集" id="ファイルの編集">ファイルの編集</a></h3>
+<pre><code>vi ファイル名 #ファイルを指定して開始
+</code></pre>
+<pre><code>i #カーソルの位置で入力モードに切り替え
+
+esc #コマンドモードに切り替え
+</code></pre>
+<pre><code>:w #保存
+
+:w ファイル名 #名前をつけて保存（新しくファイルをつくる）
+
+:q #終了
+
+:wq #保存して終了
+</code></pre>
+<h3><a class="header" href="#削除removeの略" id="削除removeの略">削除（removeの略）</a></h3>
 <pre><code>rm test.html  #test.htmlを削除する
 rm -r test  #testというディレクトリとその中身を削除する
 rm -f test  #testというファイルを警告なしで削除する
@@ -325,6 +356,14 @@ source .bash_profile  #カレントディレクトリにある.bash_profile設�
 <pre><code>history  #これまで実行してきたコマンドの履歴を表示する
 history -c  #これまで実行してきたコマンドの履歴を消去する
 </code></pre>
+<h3><a class="header" href="#差分を表示" id="差分を表示">差分を表示</a></h3>
+<pre><code>diff [ファイル1] [ファイル2] 
+</code></pre>
+<hr />
+<h3><a class="header" href="#その他コマンド操作" id="その他コマンド操作">その他コマンド操作</a></h3>
+<p><a href="https://www.handsonplus.com/mac/how-to-use-terminal/#chmod">少しマニアックなやつも乗ってる</a></p>
+<p><a href="https://gist.github.com/gushernobindsme/58ddb4d7d190686ba6b5a28fdda077f4">結構色々乗ってる</a></p>
+<p><a href="https://qiita.com/soarflat/items/09be6ab9cd91d366bf71">よく出てくるpathを通す-簡単に理解できるサイト</a></p>
 
                     </main>
 
