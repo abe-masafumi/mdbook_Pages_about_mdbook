@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="chapter_1.html">mdbook使用方法</a></li><li class="chapter-item expanded affix "><a href="chapter_2.html">エラー</a></li><li class="chapter-item expanded affix "><a href="chapter_3.html">Markdown記入法</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">1.</strong> コマンド</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="chapter_1.html">mdbook使用方法</a></li><li class="chapter-item expanded affix "><a href="chapter_2.html">エラー</a></li><li class="chapter-item expanded affix "><a href="chapter_3.html">Markdown記入法</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">1.</strong> コマンド</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">2.</strong> PAThについて</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -269,6 +269,7 @@ Error: -06 12:55:47 [ERROR] (mdbook::utils): 	Caused By: Error at line 13, colum
 <hr />
 <pre><code>Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/mdbook_pages_about_M1-Mac-reset_edit/mdbook_pages_about_M1-Mac-reset_edit/.github/actions/build'. Did you forget to run actions/checkout before running your local action?
 </code></pre>
+<p>buildフォルダを作成していなかった。buildフォルダ内にDockerfileを移動して解決</p>
 <h1><a class="header" href="#markdown記法" id="markdown記法">Markdown記法</a></h1>
 <hr />
 <p><a href="https://qiita.com/tbpgr/items/989c6badefff69377da7">Qiita Markdown記法 サンプル集</a></p>
@@ -367,7 +368,6 @@ history -c  #これまで実行してきたコマンドの履歴を消去する
 <h3><a class="header" href="#その他コマンド操作" id="その他コマンド操作">その他コマンド操作</a></h3>
 <p><a href="https://www.handsonplus.com/mac/how-to-use-terminal/#chmod">少しマニアックなやつも乗ってる</a></p>
 <p><a href="https://gist.github.com/gushernobindsme/58ddb4d7d190686ba6b5a28fdda077f4">結構色々乗ってる</a></p>
-<p><a href="https://qiita.com/soarflat/items/09be6ab9cd91d366bf71">よく出てくるpathを通す-簡単に理解できるサイト</a></p>
 <hr />
 <h3><a class="header" href="#node" id="node">node</a></h3>
 <p><a href="https://docs.npmjs.com/cli/v8/commands/npm-install">npm doc</a></p>
@@ -379,6 +379,12 @@ history -c  #これまで実行してきたコマンドの履歴を消去する
 <p><a href="https://techracho.bpsinc.jp/wingdoor/2019_10_11/80430">一度目を通すといいかも</a></p>
 <p><a href="https://original-game.com/how-to-customize-terminal-on-mac/">ターミナルカスタム設定</a></p>
 <p><a href="https://btt.hatenablog.com/entry/2013/02/10/003939">ターミナルカスタム PS1</a></p>
+<h1><a class="header" href="#pathについて" id="pathについて">PATHについて</a></h1>
+<hr />
+<p>pathを通すという言葉がよく出てくる。参考サイトのコードをコピペしてその場を乗り切っていましたが、もうやめよう</p>
+<p>前提知識からゆっくり学ぼう</p>
+<p><a href="">zsh, bash</a></p>
+<p><a href="https://qiita.com/soarflat/items/09be6ab9cd91d366bf71">よく出てくるpathを通す-簡単に理解できるサイト</a></p>
 
                     </main>
 
