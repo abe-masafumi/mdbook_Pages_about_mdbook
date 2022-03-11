@@ -281,16 +281,15 @@ Error: -06 12:55:47 [ERROR] (mdbook::utils): 	Caused By: Error at line 13, colum
 <p><a href="https://www.wzsoft.jp/wzme/help/markdown.html">WZ Markdown Editor マニュアル</a></p>
 <h1><a class="header" href="#ターミナルの知識" id="ターミナルの知識">ターミナルの知識</a></h1>
 <p><a href="https://it-jog.com/khow/terminalshortcut">ターミナルショートカットキー</a></p>
-<!-- PS1="[\d \t] \[\e[35m\]\h \w 😤 \[\e[m\]$  " -->
 <hr />
 <p>コマンド一覧</p>
 <h3><a class="header" href="#表示listの略" id="表示listの略">表示（listの略）</a></h3>
 <p>「ls」+「オプション」+「ファイル、ディレクトリ名」</p>
-<pre><code>ls	        #カレントディレクトリにあるファイルやディレクトリを表示する
-ls -l	        #ファイルやディレクトリの詳細も同時に表示する
-ls -a	        #隠しファイルも含めファイルやディレクトリを全て表示する
-ls −la	        #隠しファイルを含む全てのファイルやディレクトリの詳細を表示する
-pwd コマンド	        #カレントディレクトリのパスを表示する。（print working directoryの略）
+<pre><code>ls	        カレントディレクトリにあるファイルやディレクトリを表示する
+ls -l	        ファイルやディレクトリの詳細も同時に表示する
+ls -a	        隠しファイルも含めファイルやディレクトリを全て表示する
+ls −la	        隠しファイルを含む全てのファイルやディレクトリの詳細を表示する
+pwd コマンド	    カレントディレクトリのパスを表示する。（print working directoryの略）
 </code></pre>
 <pre><code>オプション	        機能
 -a	        隠しファイル含めファイル全表示
@@ -312,24 +311,24 @@ pwd コマンド	        #カレントディレクトリのパスを表示する
 -G	        種類に応じて色を変更して表示
 </code></pre>
 <h3><a class="header" href="#移動change-directoryの略" id="移動change-directoryの略">移動（change directoryの略）</a></h3>
-<pre><code>cd test.html	        # testテストというファイルに移動する
-cd ~/	        #ホームディレクトリに移動する
-cd ..	        #一つ上の階層のファイルに移動する
+<pre><code>cd test.html	testテストというファイルに移動する
+cd ~/	        ホームディレクトリに移動する
+cd ..	        一つ上の階層のファイルに移動する
 </code></pre>
 <h3><a class="header" href="#ファイルの作成print-working-directoryの略" id="ファイルの作成print-working-directoryの略">ファイルの作成（print working directoryの略）</a></h3>
-<pre><code>touch コマンド	        #中身が空のファイルを作る。
-touch test.html	        #test.htmlという中身が空のファイルを作る
+<pre><code>touch コマンド	        中身が空のファイルを作る。
+touch test.html	        test.htmlという中身が空のファイルを作る
 </code></pre>
 <h3><a class="header" href="#ディレクトリの作成make-directoryの略" id="ディレクトリの作成make-directoryの略">ディレクトリの作成（make directoryの略）</a></h3>
-<pre><code>mkdir test	        #testというファイルを作る
+<pre><code>mkdir test	        testというファイルを作る
 </code></pre>
 <h3><a class="header" href="#ファイルの移動名前変更コピーmoveの略copyの略" id="ファイルの移動名前変更コピーmoveの略copyの略">ファイルの移動、名前変更、コピー（moveの略）（copyの略）</a></h3>
 <pre><code>mv test.html tmp/	        #test.htmlというファイルを相対パスでtmp/に移動する
 mv test.html test2.html	        #test.htmlというファイルをtest2.htmlに名前変更する
-cp コマンド	        #ファイルをコピーする。
+cp コマンド	               #ファイルをコピーする。
 cp test.html tmp/	        #test.htmlを相対パスでtmp/というディレクトリの中にコピーする
 cp test.html test2.html	        #test.htmlをtest2.htmlという名前でコピーする
-cp −r dir /tmp/	        #dirというディレクトリとその中身を絶対パスで/tmp/にそっくりコピーする
+cp −r dir /tmp/	          #dirというディレクトリとその中身を絶対パスで/tmp/にそっくりコピーする
 </code></pre>
 <h3><a class="header" href="#ファイルの編集" id="ファイルの編集">ファイルの編集</a></h3>
 <pre><code>vi ファイル名	        #ファイルを指定して開始
@@ -340,29 +339,29 @@ esc	        #コマンドモードに切り替え
 </code></pre>
 <pre><code>:w	        #保存
 
-:w ファイル名	        #名前をつけて保存（新しくファイルをつくる）
+:w ファイル名	#名前をつけて保存（新しくファイルをつくる）
 
 :q	        #終了
 
 :wq	        #保存して終了
 </code></pre>
 <h3><a class="header" href="#削除removeの略" id="削除removeの略">削除（removeの略）</a></h3>
-<pre><code>rm test.html  #test.htmlを削除する
-rm -r test  #testというディレクトリとその中身を削除する
-rm -f test  #testというファイルを警告なしで削除する
-rm -rf test  #testというディレクトリとその中身を警告なしで削除する
+<pre><code>rm test.html	        test.htmlを削除する
+rm -r test	        testというディレクトリとその中身を削除する
+rm -f test	        testというファイルを警告なしで削除する
+rm -rf test	        testというディレクトリとその中身を警告なしで削除する
 </code></pre>
 <h3><a class="header" href="#開く" id="開く">開く</a></h3>
-<pre><code>open .  #現在のターミナルのディレクトリFinderで開く
-open ~/  #ホームディレトリをFinderで開く
+<pre><code>open .	        現在のターミナルのディレクトリFinderで開く
+open ~/	        ホームディレトリをFinderで開く
 </code></pre>
 <h3><a class="header" href="#読み込み有効" id="読み込み有効">読み込み有効</a></h3>
-<pre><code>source ~/.bash_profile  #ホームディレクトリにある.bash_profileに書き込んだ設定を読み込み有効にする
-source .bash_profile  #カレントディレクトリにある.bash_profile設定を読み込み有効にする
+<pre><code>source ~/.bash_profile	        ホームディレクトリにある.bash_profileに書き込んだ設定を読み込み有効にする
+source .bash_profile	        カレントディレクトリにある.bash_profile設定を読み込み有効にする
 </code></pre>
 <h3><a class="header" href="#履歴" id="履歴">履歴</a></h3>
-<pre><code>history  #これまで実行してきたコマンドの履歴を表示する
-history -c  #これまで実行してきたコマンドの履歴を消去する
+<pre><code>history	        これまで実行してきたコマンドの履歴を表示する
+history -c	        これまで実行してきたコマンドの履歴を消去する
 </code></pre>
 <h3><a class="header" href="#差分を表示" id="差分を表示">差分を表示</a></h3>
 <pre><code>diff [ファイル1] [ファイル2] 
@@ -384,6 +383,8 @@ history -c  #これまで実行してきたコマンドの履歴を消去する
 <p><a href="https://btt.hatenablog.com/entry/2013/02/10/003939">ターミナルカスタム PS1</a></p>
 <p><a href="https://kanasys.com/tech/803">bashとzshの違い</a></p>
 <p><a href="https://nu-sanblog.com/terminal-zsh-customize/">Macのターミナル(zsh)でプロンプトをカスタマイズする方法</a></p>
+<pre><code>PS1=&quot;[\d \t] \[\e[35m\]\h \w 😤 \[\e[m\]$  &quot;
+</code></pre>
 <h1><a class="header" href="#pathについて" id="pathについて">PATHについて</a></h1>
 <hr />
 <p>pathを通すという言葉がよく出てくる。参考サイトのコードをコピペしてその場を乗り切っていましたが、もうやめよう</p>
