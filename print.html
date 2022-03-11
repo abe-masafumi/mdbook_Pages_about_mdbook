@@ -272,6 +272,7 @@ Error: -06 12:55:47 [ERROR] (mdbook::utils): 	Caused By: Error at line 13, colum
 <pre><code>Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/mdbook_pages_about_M1-Mac-reset_edit/mdbook_pages_about_M1-Mac-reset_edit/.github/actions/build'. Did you forget to run actions/checkout before running your local action?
 </code></pre>
 <p>buildフォルダを作成していなかった。buildフォルダ内にDockerfileを移動して解決</p>
+<hr />
 <h1><a class="header" href="#markdown記法" id="markdown記法">Markdown記法</a></h1>
 <hr />
 <p><a href="https://qiita.com/tbpgr/items/989c6badefff69377da7">Qiita Markdown記法 サンプル集</a></p>
@@ -285,13 +286,13 @@ Error: -06 12:55:47 [ERROR] (mdbook::utils): 	Caused By: Error at line 13, colum
 <p>コマンド一覧</p>
 <h3><a class="header" href="#表示listの略" id="表示listの略">表示（listの略）</a></h3>
 <p>「ls」+「オプション」+「ファイル、ディレクトリ名」</p>
-<pre><code>ls  #カレントディレクトリにあるファイルやディレクトリを表示する
-ls -l  #ファイルやディレクトリの詳細も同時に表示する
-ls -a  #隠しファイルも含めファイルやディレクトリを全て表示する
-ls −la  #隠しファイルを含む全てのファイルやディレクトリの詳細を表示する
-pwd コマンド #カレントディレクトリのパスを表示する。（print working directoryの略）
+<pre><code>ls	        #カレントディレクトリにあるファイルやディレクトリを表示する
+ls -l	        #ファイルやディレクトリの詳細も同時に表示する
+ls -a	        #隠しファイルも含めファイルやディレクトリを全て表示する
+ls −la	        #隠しファイルを含む全てのファイルやディレクトリの詳細を表示する
+pwd コマンド	        #カレントディレクトリのパスを表示する。（print working directoryの略）
 </code></pre>
-<pre><code>オプション	機能
+<pre><code>オプション	        機能
 -a	        隠しファイル含めファイル全表示
 -A	        「.」と「..」以外の隠しファイル含め全表示
 -l	        詳細で表示
@@ -311,39 +312,39 @@ pwd コマンド #カレントディレクトリのパスを表示する。（pr
 -G	        種類に応じて色を変更して表示
 </code></pre>
 <h3><a class="header" href="#移動change-directoryの略" id="移動change-directoryの略">移動（change directoryの略）</a></h3>
-<pre><code>cd test.html  # testテストというファイルに移動する
-cd ~/  #ホームディレクトリに移動する
-cd ..  #一つ上の階層のファイルに移動する
+<pre><code>cd test.html	        # testテストというファイルに移動する
+cd ~/	        #ホームディレクトリに移動する
+cd ..	        #一つ上の階層のファイルに移動する
 </code></pre>
 <h3><a class="header" href="#ファイルの作成print-working-directoryの略" id="ファイルの作成print-working-directoryの略">ファイルの作成（print working directoryの略）</a></h3>
-<pre><code>touch コマンド #中身が空のファイルを作る。
-touch test.html  #test.htmlという中身が空のファイルを作る
+<pre><code>touch コマンド	        #中身が空のファイルを作る。
+touch test.html	        #test.htmlという中身が空のファイルを作る
 </code></pre>
 <h3><a class="header" href="#ディレクトリの作成make-directoryの略" id="ディレクトリの作成make-directoryの略">ディレクトリの作成（make directoryの略）</a></h3>
-<pre><code>mkdir test #testというファイルを作る
+<pre><code>mkdir test	        #testというファイルを作る
 </code></pre>
 <h3><a class="header" href="#ファイルの移動名前変更コピーmoveの略copyの略" id="ファイルの移動名前変更コピーmoveの略copyの略">ファイルの移動、名前変更、コピー（moveの略）（copyの略）</a></h3>
-<pre><code>mv test.html tmp/  #test.htmlというファイルを相対パスでtmp/に移動する
-mv test.html test2.html  #test.htmlというファイルをtest2.htmlに名前変更する
-cp コマンド #ファイルをコピーする。
-cp test.html tmp/  #test.htmlを相対パスでtmp/というディレクトリの中にコピーする
-cp test.html test2.html  #test.htmlをtest2.htmlという名前でコピーする
-cp −r dir /tmp/  #dirというディレクトリとその中身を絶対パスで/tmp/にそっくりコピーする
+<pre><code>mv test.html tmp/	        #test.htmlというファイルを相対パスでtmp/に移動する
+mv test.html test2.html	        #test.htmlというファイルをtest2.htmlに名前変更する
+cp コマンド	        #ファイルをコピーする。
+cp test.html tmp/	        #test.htmlを相対パスでtmp/というディレクトリの中にコピーする
+cp test.html test2.html	        #test.htmlをtest2.htmlという名前でコピーする
+cp −r dir /tmp/	        #dirというディレクトリとその中身を絶対パスで/tmp/にそっくりコピーする
 </code></pre>
 <h3><a class="header" href="#ファイルの編集" id="ファイルの編集">ファイルの編集</a></h3>
-<pre><code>vi ファイル名 #ファイルを指定して開始
+<pre><code>vi ファイル名	        #ファイルを指定して開始
 </code></pre>
-<pre><code>i #カーソルの位置で入力モードに切り替え
+<pre><code>i	        #カーソルの位置で入力モードに切り替え
 
-esc #コマンドモードに切り替え
+esc	        #コマンドモードに切り替え
 </code></pre>
-<pre><code>:w #保存
+<pre><code>:w	        #保存
 
-:w ファイル名 #名前をつけて保存（新しくファイルをつくる）
+:w ファイル名	        #名前をつけて保存（新しくファイルをつくる）
 
-:q #終了
+:q	        #終了
 
-:wq #保存して終了
+:wq	        #保存して終了
 </code></pre>
 <h3><a class="header" href="#削除removeの略" id="削除removeの略">削除（removeの略）</a></h3>
 <pre><code>rm test.html  #test.htmlを削除する
